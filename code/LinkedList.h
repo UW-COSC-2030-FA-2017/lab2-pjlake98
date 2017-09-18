@@ -1,5 +1,7 @@
 // LinkedList.h
 
+// James Fantin COSC 2030
+
 // tom bailey   0740  5 oct 2010
 // Declaration of the List class.
 
@@ -15,7 +17,7 @@
 #include <iostream>
 using std::ostream;
 
-#include "Node.cpp"
+#include "Node.h"
 
 #define ulong unsigned long
 
@@ -46,6 +48,12 @@ public:
 
 	//*** Accessors ***
 
+	// get the sum of all items in the list
+	double sum();
+
+	// return size of the linked list
+	int getSize();
+
 	// post: true has been returned just if this List is
 	//         empty.
 	bool empty() const;
@@ -56,6 +64,9 @@ public:
 
 
 	//*** Mutators ***
+
+	// post: x has been added as the last double in this List.
+	void insertAsLast(double x);
 
 	// post: x has been added as the first double in this
 	//         List.
@@ -90,3 +101,4 @@ private:
 ostream & operator<<(ostream & outfile, const List & list);
 
 #endif
+

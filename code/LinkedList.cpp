@@ -1,5 +1,7 @@
 // LinkedList.cpp
 
+// James Fantin COSC 2030
+
 // tom bailey   0745  5 oct 2010
 // Definition of methods for the List class.
 
@@ -43,12 +45,66 @@ const List & List::operator=(const List & other)
 	return *this;
 }
 
+double List::sum()
+{
+    double size = 0;
+    if(!empty())
+    {
+        // start at the first pointer
+        Node * ptr = first_;
+        // if there is a pointer, then increment size
+		while (ptr != NULL)
+		{
+		    size += ptr->entry_;
+			ptr = ptr->next_;
+		}
+
+    }
+    return size;
+}
+
+int List::getSize()
+{
+    int size = 0;
+    // check if there is nothing in the list
+    if(!empty())
+    {
+        // start at the first pointer
+        Node * ptr = first_;
+
+        // if there is a pointer, then increment size
+		while (ptr != NULL)
+		{
+			ptr = ptr->next_;
+			size++;
+		}
+
+    }
+    return size;
+}
+
 
 bool List::empty() const
 {
 	return first_ == NULL;
 }
 
+void List::insertAsLast(double x)
+{
+    if(!empty())
+    {
+        Node * ptr = first_;
+        for(int i = 0; i < getSize() - 1; i++)
+        {
+            ptr = ptr->next_;
+        }
+        ptr->next_ = new Node(x, NULL);
+    }
+    else
+    {
+        first_ = new Node(x, NULL);
+    }
+}
 
 void List::insertAsFirst(double x)
 {
@@ -126,5 +182,3 @@ ostream & operator<<(ostream & outfile, const List & list)
 	list.print(outfile);
 	return outfile;
 }
-
-
